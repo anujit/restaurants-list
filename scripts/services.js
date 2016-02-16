@@ -9,7 +9,7 @@ foodApp.factory('FetchData',['$http',function($http){
 	obj.name = 'fetch data service';
 	
 	obj.getData = function(url){
-		return $http.get(url);
+		return $http.jsonp(url + '&callback=JSON_CALLBACK');
 	}
 	
 	
