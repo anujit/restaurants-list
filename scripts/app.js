@@ -16,7 +16,7 @@ var CO_ORDINATES = {
 }
 
 var TEMPLATES = {
-	listTemplate : '/angular_poc/templates/list-template.html'
+	listTemplate : '/restaurants-list/templates/list-template.html'
 }
 
 foodApp.controller('MainCtrl',[function(){
