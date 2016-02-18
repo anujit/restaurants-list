@@ -1,3 +1,17 @@
-<form>
-	
-</form>
+<div class="header">
+	<h4>Add a new restaurant</h4>
+</div>
+<div class="restaurant-wrapper">
+	<form ng-submit="addCtrl.submit()" name="add-review-form">
+		<div class="input-wrap required"><div class="label">Name of the restaurant : </div><input type="text" name="restaurant" ng-minlength="2" required ng-model="addCtrl.newReview.name"><span ng-show="add-review-form.restaurant.$error.required">This is a required field</span><span ng-show="add-review-form.restaurant.$error.minlength">Minimum length required is 2</span><span ng-show="add-review-form.restaurant.$invalid">This field is invalid</span>
+		</div>
+		<div class="input-wrap required"><div class="label">Address : </div><input type="text" required ng-model="addCtrl.newReview.address"></div>
+		<div class="input-wrap required"><div class="label">Cuisine : </div><input type="text" required ng-model="addCtrl.newReview.cuisine"></div>
+		<div class="input-wrap required"><div class="label">Average cost for two : </div><input type="text" required ng-model="addCtrl.newReview.avgcost"></div>
+		<div class="input-wrap"><div class="label">Your rating : </div><input type="text" ng-model="addCtrl.newReview.rating"></div>
+		<div class="input-wrap"><div class="label">Comments/Feedback : </div><textarea ng-model="addCtrl.newReview.comments"></textarea></div>
+		<input type="submit"
+value="Submit"
+ng-disabled="add-review-form.$invalid">
+	</form>
+</div>

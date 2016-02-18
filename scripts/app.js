@@ -64,7 +64,7 @@ var foodApp = angular.module('foodApp',['ngRoute']);
 		var self = this;
 		
 		self.submit = function(){
-			console.log();
+			console.log('New review -- ', self.newReview);
 		}
 	}]);
 	
@@ -80,4 +80,4 @@ var foodApp = angular.module('foodApp',['ngRoute']);
 		})
 		.otherwise({redirectTo : '/'});
 	}]);	
-})()
+})();

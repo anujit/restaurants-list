@@ -114,3 +114,22 @@ img {
 	top:3px;
 	right:3px;
 }
+
+
+/*add restaurant css*/
+
+.label{
+	float:left;
+	width:200px;
+}
+
+.input-wrap{
+	margin : 20px auto;
+}
+
+.input-wrap textarea{
+	height:85px;
+	width:390px;
+}
+
+.required :after { content:"*"; color: #e32;}
