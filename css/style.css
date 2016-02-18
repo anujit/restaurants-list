@@ -15,7 +15,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	/* font: inherit; */
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -51,23 +51,46 @@ table {
 /*Reset CSS ends*/
 
 
-.restaurant-wrapper {
+.header{
+	margin-bottom:25px;
+	width:1300px;
+	margin:25px auto;
+}
+
+h4{
+	margin-bottom:4px;
+}
+
+button{
+	float:right;
+	margin-right:30px;
+}
+
+.restaurant-wrapper{
+	width:1300px;
+	margin:auto;
+}
+
+.restaurant-box {
     width: 23%;
     float: left;
     background: beige;
     border-radius: 6px;
     margin-right: 26px;
 	
-	height:350px;
+	height:385px;
 	margin-bottom:15px;
 }
 
 .details-wrapper{
 	position:relative;
+	padding:9px;
 }
 
 .restaurant-cuisine{
-	height:32px;
+	height:53px;
+	padding:10px;
+	padding-left:19px;
 }
 
 .listWrapper {

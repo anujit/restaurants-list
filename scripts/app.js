@@ -1,66 +1,83 @@
-console.log('Loading app.js...');
-
 var foodApp = angular.module('foodApp',['ngRoute']);
 
-var LIST_URL = '/angular_poc/data/pune_listing.txt';
+(function(){
+	console.log('Loading app.js...');	
 
-var API_URL = 'https://developers.zomato.com/api/v2.1/search?lat=18.5203&lon=73.8567';
 
-var API_KEY = '53d958ae70927695fa9c76beae23046d';
+	var LIST_URL = '/angular_poc/data/pune_listing.txt';
 
-API_URL += '&apikey=' + API_KEY;
+	var API_URL = 'https://developers.zomato.com/api/v2.1/search?lat=18.5203&lon=73.8567';
 
-var CO_ORDINATES = {
-	latitutde : '18.5203',
-	longitude : '73.8567'
-}
+	var API_KEY = '53d958ae70927695fa9c76beae23046d';
 
-var TEMPLATES = {
-	listTemplate : '/restaurants-list/templates/list-template.html'
-}
+	API_URL += '&apikey=' + API_KEY;
 
-foodApp.controller('MainCtrl',[function(){
-	console.log('main controller created');
-	
-	var self = this;
-	
-	self.isAllowed = true;
-	
-}]);
+	var CO_ORDINATES = {
+		latitutde : '18.5203',
+		longitude : '73.8567'
+	}
 
-foodApp.controller('ListCtrl',['FetchData',function(fetchData){
-	console.log('list controller created');
-	
-	var self = this;
-	
-	self.city = 'Pune';
-	
-	//self.url = LIST_URL;
-	self.url = API_URL;
-	
-	var list = fetchData.getData(self.url).then(function(data){
-		self.restaurants = data.data.restaurants;
-		console.log('Restaurants -- ', self.restaurants);
-	});	
-	
-	self.getRating = function(user_rating){
-		console.log(user_rating)
-		if(!user_rating) return '';
+	var TEMPLATES = {
+		listTemplate : '/restaurants-list/templates/list-template.html',
+		addTemplate : '/restaurants-list/templates/add-template.html'
+	}
+
+	foodApp.controller('MainCtrl',[function(){
+		console.log('main controller created');
 		
-		var rating = user_rating.aggregate_rating != '0' ? user_rating.aggregate_rating : '';
+		var self = this;
 		
-		return rating;
-	};
-}]);
+		self.isAllowed = true;
+		
+	}]);
 
-foodApp.config(['$routeProvider',function($routeProvider){
+	foodApp.controller('ListCtrl',['FetchData',function(fetchData){
+		console.log('list controller created');
+		
+		var self = this;
+		
+		self.city = 'Pune';
+		
+		//self.url = LIST_URL;
+		self.url = API_URL;
+		
+		var list = fetchData.getData(self.url).then(function(data){
+			self.restaurants = data.data.restaurants;
+			console.log('Restaurants -- ', self.restaurants);
+		});	
+		
+		self.getRating = function(user_rating){
+			console.log(user_rating)
+			if(!user_rating) return '';
+			
+			var rating = user_rating.aggregate_rating != '0' ? user_rating.aggregate_rating : '';
+			
+			return rating;
+		};
+		
+		self.addRestaurant = function(){
+			window.location.href = '#/add';
+		};
+	}]);
 	
-	$routeProvider.when('/',{
-		templateUrl : TEMPLATES.listTemplate,
-		controller : 'ListCtrl as listCtrl'
-	})
-	.when('/edit',{
-		template : '<h5>Edit details</h5>'
-	})
-	.otherwise({redirectTo : '/'});
-}]);
+	foodApp.controller('AddCtrl',[function(){
+		var self = this;
+		
+		self.submit = function(){
+			console.log();
+		}
+	}]);
+	
+	foodApp.config(['$routeProvider',function($routeProvider){
+		
+		$routeProvider.when('/',{
+			templateUrl : TEMPLATES.listTemplate,
+			controller : 'ListCtrl as listCtrl'
+		})
+		.when('/add',{
+			templateUrl : TEMPLATES.addTemplate,
+			controller : 'AddCtrl as addCtrl'
+		})
+		.otherwise({redirectTo : '/'});
+	}]);	
+})()
