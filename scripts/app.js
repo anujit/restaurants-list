@@ -1,7 +1,7 @@
 var foodApp = angular.module('foodApp',['ngRoute']);
 
 (function(){
-	console.log('Loading app.js...');	
+	console.log('Loading app.js');	
 
 
 	var LIST_URL = '/angular_poc/data/pune_listing.txt';
