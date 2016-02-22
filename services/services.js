@@ -17,8 +17,8 @@ foodApp.factory('FetchData',['$http','$q',function($http,$q){
 		.success(function(data){
 			deferred.resolve(data);
 		})
-		.error(function(errorData){
-			console.log('Cannot load ' + url + ' -- ',errorData);
+		.error(function(error){
+			deferred.reject('Cannot load ' + url + ' -- ',error);
 		});
 		
 		return deferred.promise;
