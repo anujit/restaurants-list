@@ -7,13 +7,13 @@
 		</div>
 	</div>
 	<div class="restaurant-wrapper">
-		<div class="restaurant-box" ng-repeat="restaurant in listCtrl.restaurants">
+		<div class="restaurant-box" ng-repeat="restaurant in listCtrl.restaurants | filter:searchText">
 			<div class="restaurant-cuisine">{{restaurant.restaurant.cuisines}}</div>
 			<div class="image-wrapper">
-				<img src="/angular_poc/images/default.gif">
+				<img src="/restaurants-list/images/default.gif">
 			</div>
 			<div class="details-wrapper">
-				<div class="restaurant-name-wrap"><span>{{restaurant.restaurant.name | filter:searchText}}</span></div>
+				<div class="restaurant-name-wrap"><span>{{restaurant.restaurant.name}}</span></div>
 				<div class="rating-wrap" style="background-color:{{restaurant.restaurant.userRating.rating_color}}">{{listCtrl.getRating(restaurant.restaurant.userRating)}}</div>
 				<div class="cost-for-two">
 					<span>Average cost for two : {{restaurant.restaurant.currency}} {{restaurant.restaurant.averageCostForTwo}}</span>
