@@ -38,4 +38,9 @@ foodApp.controller('ListCtrl',['FetchData','$location',function(fetchData,$locat
 		//window.location.href = '#/add';
 		$location.path('add');
 	};
+	
+	self.addIssue = function(){
+		$location.path('issue');
+	};
+	
 }]);

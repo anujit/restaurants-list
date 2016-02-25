@@ -1,0 +1,7 @@
+<div class="restaurant-wrapper">
+	<form ng-submit="issueCtrl.submit()" name="add-review-form">
+		<div class="input-wrap required"><div class="label">Username : </div><input type="text" required ng-model="issueCtrl.username"></div>
+		<div class="input-wrap required"><div class="label">Password : </div><input type="password" required ng-model="issueCtrl.password"></div>	
+		<input type="submit" value="Submit" ng-disabled="add-review-form.$invalid">
+	</form>
+</div>

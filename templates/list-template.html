@@ -4,16 +4,17 @@
 		<div class="searchWrapper">
 			<label>Search: <input ng-model="searchText"></label>
 			<button ng-click="listCtrl.addRestaurant()">Add Restaurant</button>
+			<button ng-click="listCtrl.addIssue()">Add Issue</button>
 		</div>
 	</div>
 	<div class="restaurant-wrapper">
 		<div class="restaurant-box" ng-repeat="restaurant in listCtrl.restaurants | filter:searchText">
 			<div class="restaurant-cuisine">{{restaurant.restaurant.cuisines}}</div>
 			<div class="image-wrapper">
-				<img src="/restaurants-list/images/default.gif">
+				<img ng-src="{{restaurant.restaurant.featuredImage}}">
 			</div>
 			<div class="details-wrapper">
-				<div class="restaurant-name-wrap"><span>{{restaurant.restaurant.name}}</span></div>
+				<div class="restaurant-name-wrap"><span><b>{{restaurant.restaurant.name}}</b></span></div>
 				<div class="rating-wrap" style="background-color:{{restaurant.restaurant.userRating.rating_color}}">{{listCtrl.getRating(restaurant.restaurant.userRating)}}</div>
 				<div class="cost-for-two">
 					<span>Average cost for two : {{restaurant.restaurant.currency}} {{restaurant.restaurant.averageCostForTwo}}</span>
